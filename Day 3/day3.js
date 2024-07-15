@@ -117,7 +117,7 @@ number % 2 === 0
 // Check if a year is a leap year
 let year = 2028;
 
-if (year % 4 === 0 && year % 100 !== 0) {
+if ((year % 4 === 0 && year % 100 !== 0) || year % 400 === 0) {
   console.log(`${year} is a leap year`);
 } else {
   console.log(`${year} is not a leap year`);
@@ -221,7 +221,7 @@ checkGrades(80.2);
 // *-*-*-*-* Activity 12 *-*-*-*-*
 // Function to check if a year is a leap year
 function checkLeapYear(year) {
-  if (year % 4 === 0 && year % 100 !== 0) {
+  if ((year % 4 === 0 && year % 100 !== 0) || year % 400 === 0) {
     console.log(`${year} is a leap year`);
   } else {
     console.log(`${year} is not a leap year`);
