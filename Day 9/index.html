@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0"
+    />
+    <title>Day 9 - The DOM</title>
+  </head>
+  <body>
+    <!-- Activity 1: Changing the text content of the h1 element -->
+    <h1 id="title">Day 9 - The DOM</h1>
+
+    <!-- Activity 2: Changing the background color of the button -->
+    <button class="btn" style="background-color: green">
+      My Bg color was green
+    </button>
+
+    <!-- Activity 4: Adding a new list item to the ul element -->
+    <ul id="fruits">
+      <li>Apple</li>
+      <li>Mango</li>
+    </ul>
+
+    <!-- Activity 5: Removing the h1 element -->
+    <h1 id="heading">
+      I was there for sometime! And then Ak comes with "Infinity
+      Gauntlet"
+    </h1>
+    <h4>
+      Note: Once upon a time, There was heading living peacfully, but
+      then Ak comes with "Infinity Gauntlet"!
+    </h4>
+
+    <!-- Activity 6: Removing the last list item from the ul element -->
+    <ul class="books">
+      <li>Harry Potter</li>
+      <li>Twilight Saga</li>
+      <li>Games People Play</li>
+      <li>
+        The Lucifer Effect: Understanding How Good People Turn Evil
+      </li>
+      <li>Emotional Intelligence: Why It Can Matter More Than IQ</li>
+    </ul>
+
+    <!-- Activity 7: Changing the image source -->
+    <img
+      class="image"
+      src="https://images.unsplash.com/photo-1530789253388-582c481c54b0?q=80&w=1470&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+      alt=""
+      style="width: 500px"
+    />
+
+    <!-- Activity 8: Adding and removing classes to the h2 element -->
+    <h2 class="heading2" style="background-color: yellow">
+      My back ground color was yellow!
+    </h2>
+
+    <!-- Activity 9: Changing the background color of the paragraph on button click -->
+    <p class="paragraph">I can change my color!</p>
+    <button class="color-btn">Click to change color</button>
+
+    <!-- Activity 10: Changing the border color of the h1 element on hover -->
+    <h1 id="head" style="border: 2px solid #dc143c">
+      I can change my border color on hover!
+    </h1>
+
+    <script>
+      // Activity 1: Changing the text content of the h1 element with id="title"
+      const title = document.querySelector("#title");
+      title.textContent = "Text Replaced!";
+
+      // Activity 2: Changing the background color of the button with class="btn"
+      const button = document.querySelector(".btn");
+      button.style.backgroundColor = "#dc143c";
+
+      // Activity 3: Creating a new div element and appending it to the body
+      const para = document.createElement("div");
+      para.innerHTML = "This element is created by Javascript!";
+      document.body.append(para);
+
+      // Activity 4: Adding a new list item to the ul element with id="fruits"
+      const fruits = document.querySelector("#fruits");
+      const fruit = document.createElement("li");
+      fruit.innerHTML = "Lichi";
+      fruits.appendChild(fruit);
+
+      // Activity 5: Removing the h1 element with id="heading"
+      const heading = document.querySelector("#heading");
+      heading.remove();
+
+      // Activity 6: Removing the last list item from the ul element with class="books"
+      const book = document.querySelector(".books");
+      book.removeChild(book.lastElementChild);
+
+      // Activity 7: Changing the image source of the img element with class="image"
+      const image = document.querySelector(".image");
+      image.src =
+        "https://images.unsplash.com/photo-1721189738443-554657897b5f?q=80&w=1510&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D";
+
+      // Activity 8: Adding and removing classes to the h2 element with class="heading2"
+      const heading2 = document.querySelector(".heading2");
+      heading2.classList.add("class-is-added");
+      heading2.classList.add("class-is-removed");
+      heading2.classList.remove("class-is-removed");
+
+      // Activity 9: Changing the background color of the paragraph with class="paragraph" on button click
+      const paragraph = document.querySelector(".paragraph");
+      const colorBtn = document.querySelector(".color-btn");
+
+      colorBtn.addEventListener("click", () => {
+        paragraph.style.backgroundColor = "#00FFFF";
+      });
+
+      // Activity 10: Changing the border color of the h1 element with id="head" on hover
+      const head = document.querySelector("#head");
+      head.addEventListener("mouseover", () => {
+        head.style.border = "2px solid #ff8243";
+      });
+
+      head.addEventListener("mouseout", () => {
+        head.style.border = "2px solid #dc143c";
+      });
+    </script>
+  </body>
+</html>
