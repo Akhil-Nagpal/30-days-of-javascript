@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0"
+    />
+    <title>Day 10 -> Event Handling</title>
+  </head>
+  <body>
+    <!-- Activity 1: Change the title text when button is clicked -->
+    <h3 class="title">Ak just started!</h3>
+    <button class="title-btn">Click to Change!</button>
+
+    <!-- Activity 2: Toggle the image opacity when button is clicked -->
+    <div>
+      <img
+        class="img"
+        src="https://images.unsplash.com/photo-1506744038136-46273834b3fb?q=80&w=1470&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+        alt=""
+        style="width: 450px; opacity: 1"
+      />
+    </div>
+    <button class="toggle">Change The View!</button>
+
+    <!-- Activity 3: Change the background color and text color on mouseover -->
+    <h3
+      class="head"
+      style="background-color: #00ffff; color: #202020"
+    >
+      Perfection is not attainable. But if we chase perfection, we can
+      catch excellence!
+    </h3>
+
+    <!-- Activity 5: Display key details when any key is pressed -->
+    <div class="key">Press Any Key</div>
+
+    <!-- Activity 6: Display input text in a paragraph on keyup event -->
+    <p class="para"></p>
+    <input type="text" class="input" id="input" />
+    <label for="input">keyup</label>
+
+    <!-- Activity 7: Log form data to console on form submit -->
+    <form action="#" class="form">
+      <label for="email">Email:</label>
+      <input type="email" id="email" />
+
+      <label for="password">Password</label>
+      <input type="password" id="password" />
+
+      <button type="submit">Submit</button>
+    </form>
+
+    <!-- Activity 8: Display selected dropdown value -->
+    <form action="#" class="drop">
+      <label for="select">Select:</label>
+      <select name="" id="select">
+        <option value="home">Home</option>
+        <option value="about">About</option>
+        <option value="contact">Contact</option>
+        <option value="pricing">Pricing</option>
+        <option value="gallery">Gallery</option>
+      </select>
+    </form>
+    <p class="selected"></p>
+
+    <!-- Activity 9: Display clicked list item text in a heading -->
+    <ul class="list" style="cursor: pointer">
+      <li>Apple</li>
+      <li>Mango</li>
+      <li>Lichi</li>
+      <li>Orange</li>
+    </ul>
+    <h3 class="fruit-head"></h3>
+
+    <!-- Activity 10: Add a new child element to the parent div on button click -->
+    <div class="parent"></div>
+    <button class="child-btn">Add Child</button>
+
+    <!-- Javascript starts here -->
+    <script>
+      // *-*-* Activity 1 *-*-*
+      // Select the title element and button
+      const title = document.querySelector(".title");
+      const btn = document.querySelector(".title-btn");
+      // Add event listener to the button to change the title text on click
+      btn.addEventListener("click", () => {
+        title.innerHTML = "Ak is the best!";
+      });
+
+      // *-*-* Activity 2 *-*-*
+      // Select the image element and toggle button
+      const image = document.querySelector(".img");
+      const toggleBtn = document.querySelector(".toggle");
+      // Add event listener to the button to toggle the image opacity on click
+      toggleBtn.addEventListener("click", () => {
+        if (image.style.opacity === "1") {
+          image.style.opacity = "0";
+        } else {
+          image.style.opacity = "1";
+        }
+      });
+
+      // *-*-* Activity 3 *-*-*
+      // Select the head element
+      const head = document.querySelector(".head");
+      // Add event listener to change background and text color on mouseover
+      head.addEventListener("mouseover", () => {
+        head.style.backgroundColor = "#FF2400";
+        head.style.color = "white";
+      });
+
+      // *-*-* Activity 4 *-*-*
+      // Add event listener to revert background and text color on mouseout
+      head.addEventListener("mouseout", () => {
+        head.style.backgroundColor = "#00ffff";
+        head.style.color = "#202020";
+      });
+
+      // *-*-* Activity 5 *-*-*
+      // Select the key element
+      const key = document.querySelector(".key");
+      // Add event listener to display key details when any key is pressed
+      window.addEventListener("keydown", (e) => {
+        key.innerHTML = `
+        <div class="table">
+          <table>
+            <tr>
+              <th>Key</th>
+              <th>KeyCode</th>
+              <th>Code</th>
+            </tr>
+            <tr>
+              <td>${e.key === " " ? "Space" : e.key}</td>
+              <td>${e.keyCode}</td>
+              <td>${e.code}</td>
+            </tr>
+          </table>
+        </div>`;
+      });
+
+      // *-*-* Activity 6 *-*-*
+      // Select the paragraph and input elements
+      const para = document.querySelector(".para");
+      const input = document.querySelector(".input");
+      // Add event listener to display input text in paragraph on keyup
+      input.addEventListener("keyup", (e) => {
+        para.innerHTML = `${e.target.value}`;
+      });
+
+      // *-*-* Activity 7 *-*-*
+      // Select the form element
+      const form = document.querySelector(".form");
+      // Add event listener to log form data to console on submit
+      form.addEventListener("submit", (e) => {
+        e.preventDefault();
+        console.table({
+          Email: e.target[0].value,
+          Password: e.target[1].value,
+        });
+      });
+
+      // *-*-* Activity 8 *-*-*
+      // Select the dropdown form and selected paragraph elements
+      const drop = document.querySelector(".drop");
+      const selected = document.querySelector(".selected");
+      // Add event listener to display selected dropdown value
+      drop.addEventListener("change", (e) => {
+        e.preventDefault();
+        selected.innerHTML = e.target.value;
+      });
+
+      // *-*-* Activity 9 *-*-*
+      // Select the fruit heading and list elements
+      const fruits = document.querySelector(".fruit-head");
+      const list = document.querySelector(".list");
+      // Add event listener to display clicked list item text in heading
+      list.addEventListener("click", (e) => {
+        console.log(e);
+        fruits.innerHTML = e.target.textContent;
+      });
+
+      // *-*-* Activity 10 *-*-*
+      // Select the parent div and child button elements
+      const parent = document.querySelector(".parent");
+      const addChild = document.querySelector(".child-btn");
+      // Add event listener to add a new child element to the parent div on button click
+      addChild.addEventListener("click", () => {
+        const child = document.createElement("h1");
+        child.innerHTML = "I'm a Child!";
+        parent.appendChild(child);
+      });
+    </script>
+  </body>
+</html>
